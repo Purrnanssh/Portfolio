@@ -101,6 +101,16 @@ html[data-theme="light"]{
   --pill-shadow: 0 8px 24px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.08);
 }
 
+/* ============================================================ PRELOADER */
+#preloader { position: fixed; inset: 0; z-index: 99999; background: var(--bg); display: flex; align-items: center; justify-content: center; color: var(--text); font-family: var(--sans); transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s; }
+.pl-content { text-align: center; }
+.pl-name { font-size: 15px; font-weight: 500; color: var(--text-3); margin-bottom: 12px; opacity: 0; transform: translateY(8px); filter: blur(4px); }
+.pl-tagline { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; color: var(--text); opacity: 0; transform: translateY(8px); filter: blur(4px); }
+.pl-anim .pl-name { animation: plFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.pl-anim .pl-tagline { animation: plFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards; }
+@keyframes plFade { to { opacity: 1; transform: translateY(0); filter: blur(0); } }
+@media (prefers-reduced-motion: reduce) { #preloader { display: none !important; } }
+
 /* ============================================================ BASE */
 *{box-sizing:border-box; margin:0; padding:0}
 html{scroll-behavior:smooth}
@@ -450,6 +460,34 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
 </style>
 </head>
 <body>
+<!-- ============================================================ PRELOADER -->
+<div id="preloader" aria-hidden="true">
+  <div class="pl-content">
+    <div class="pl-name">Purrnanssh Sinha</div>
+    <div class="pl-tagline">Data Science,<br>beyond dashboards.</div>
+  </div>
+</div>
+<script>
+  if (!sessionStorage.getItem('portfolio_visited') && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.body.style.overflow = 'hidden';
+    document.body.style.height = '100vh';
+    document.getElementById('preloader').classList.add('pl-anim');
+    setTimeout(() => {
+      const pl = document.getElementById('preloader');
+      if(pl) {
+        pl.style.opacity = '0';
+        pl.style.visibility = 'hidden';
+        document.body.style.overflow = '';
+        document.body.style.height = '';
+        setTimeout(() => pl.remove(), 700);
+      }
+    }, 1400);
+    sessionStorage.setItem('portfolio_visited', 'true');
+  } else {
+    const pl = document.getElementById('preloader');
+    if(pl) pl.style.display = 'none';
+  }
+</script>
 <!-- Ambient background removed -->
 <div class="noise" aria-hidden="true"></div>
 
