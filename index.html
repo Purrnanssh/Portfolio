@@ -468,7 +468,7 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
   </div>
 </div>
 <script>
-  if (!sessionStorage.getItem('portfolio_visited') && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.body.style.overflow = 'hidden';
     document.body.style.height = '100vh';
     document.getElementById('preloader').classList.add('pl-anim');
@@ -482,7 +482,6 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
         setTimeout(() => pl.remove(), 700);
       }
     }, 1400);
-    sessionStorage.setItem('portfolio_visited', 'true');
   } else {
     const pl = document.getElementById('preloader');
     if(pl) pl.style.display = 'none';
