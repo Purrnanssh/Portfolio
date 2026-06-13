@@ -93,7 +93,7 @@ html[data-theme="light"]{
   --blob1: rgba(0,0,0,.03);
   --blob2: rgba(0,0,0,.02);
   --noise-o: .022;
-  --nav-glass: rgba(255, 255, 255, 0.82);
+  --nav-glass: rgba(230, 230, 235, 0.78);
   --nav-edge-t: rgba(255,255,255,0.95);
   --nav-edge-b: rgba(255,255,255,0.4);
   --nav-border: rgba(0,0,0,0.06);
@@ -242,11 +242,35 @@ html[data-theme="light"] .icon-moon{ opacity:1; transform: scale(1) rotate(0); f
 ::view-transition-old(root), ::view-transition-new(root){ animation-duration:.55s }
 
 /* ============================================================ LIGHT MODE OVERRIDES */
+/* Active Navigation Pill - Apple Focus Material */
 html[data-theme="light"] .nav-pill {
-  background: rgba(0, 0, 0, 0.15) !important;
-  box-shadow: none !important;
-  border: 10px solid transparent !important;
-  background-clip: padding-box !important;
+  background: rgba(235,235,240,0.50) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255,255,255,0.75) !important;
+  box-shadow: 
+    inset 0 2px 1px rgba(255,255,255,0.8),
+    inset 0 -2px 2px rgba(255,255,255,0.15),
+    0 8px 24px rgba(0,0,0,0.08) !important;
+  margin-top: -2px !important;
+  overflow: hidden !important;
+}
+
+html[data-theme="light"] .nav-pill::before {
+  content: ''; 
+  position: absolute; 
+  inset: 0; 
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.08));
+  filter: blur(1px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Ensure maximum contrast for the active text */
+html[data-theme="light"] .nav-links a.active {
+  color: rgba(20,20,25,0.95) !important;
+  font-weight: 600 !important;
 }
 
 /* ============================================================ BUTTONS */
