@@ -425,7 +425,7 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
   .foot { flex-direction: column; gap: 24px; justify-content: center; }
   .foot > span { text-align: center !important; }
 }
-.toast{ position:fixed; left:50%; bottom:28px; transform:translate(-50%, 16px); z-index:80;
+.toast{ position:fixed; left:50%; bottom:calc(112px + env(safe-area-inset-bottom, 0px)); transform:translate(-50%, 16px); z-index:100;
   padding:11px 20px; border-radius:999px; background:var(--text); color:var(--bg);
   font-size:13.5px; font-weight:600; opacity:0; pointer-events:none;
   transition: opacity .35s var(--ease), transform .35s var(--ease) }
@@ -588,15 +588,15 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
   </header>
   <div class="about-grid">
     <div class="about-copy reveal">
-      <p>I’m a Computer Science undergraduate focused on data science, analytics, and software engineering. What interests me most isn’t just training models or writing code—it’s understanding how technology can turn messy, real-world information into systems that people can actually rely on. Over time, my curiosity has pulled me beyond the classroom and into building projects that involve data pipelines, automation, machine learning, and the engineering that connects everything together.</p>
-      <p>I enjoy working on problems that require both analytical thinking and practical execution. Whether it’s exploring patterns in large datasets, designing backend systems, or creating tools that simplify complex processes, I’m drawn to work where ideas have to survive outside a notebook and deliver real value. I believe the best technology is often invisible—reliable, efficient, and quietly solving problems in the background.</p>
+      <p>I’m a Computer Science undergraduate focused on data science, analytics, and software engineering. What interests me most isn’t just training models or writing code. It’s understanding how technology can turn messy, real-world information into systems that people can actually rely on. Over time, my curiosity has pulled me beyond the classroom and into building projects that involve data pipelines, automation, machine learning, and the engineering that connects everything together.</p>
+      <p>I enjoy working on problems that require both analytical thinking and practical execution. Whether it’s exploring patterns in large datasets, designing backend systems, or creating tools that simplify complex processes, I’m drawn to work where ideas have to survive outside a notebook and deliver real value. I believe the best technology is often invisible. Reliable, efficient, and quietly solving problems in the background.</p>
       <p>Outside of academics, I spend a significant amount of time learning by building. I enjoy breaking down systems to understand how they work, experimenting with new technologies, and continuously improving my problem-solving skills. I’m particularly interested in the intersection of data, software, and decision-making, and I’m always looking for opportunities to contribute to projects that challenge me to think deeper and build better.</p>
       <p class="signature" style="color: var(--accent); font-size: 1.1em; font-weight: 500; margin-top: 40px;">Aggressive in execution. Relentless in improvement.</p>
     </div>
     <div class="facts" data-stagger>
       <div class="fact-row glass lift"><span>LOCATION</span><b>Punjab, India</b></div>
-      <div class="fact-row glass lift"><span>EDUCATION</span><b>B.Tech Computer Science Engineering · LPU · 2027</b></div>
-      <div class="fact-row glass lift"><span>FOCUS</span><b>Data Science · Analytics · Software Engineering</b></div>
+      <div class="fact-row glass lift"><span>EDUCATION</span><b>B.Tech Computer Science Engineering, LPU, 2027</b></div>
+      <div class="fact-row glass lift"><span>FOCUS</span><b>Data Science, Analytics, Software Engineering</b></div>
       <div class="fact-row glass lift"><span>CURRENTLY</span><b>Building projects, learning, lifting</b></div>
     </div>
   </div>
@@ -687,13 +687,13 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
       <svg viewBox="0 25 640 190" role="img">
         <rect class="node-c" x="20" y="40" width="148" height="44" rx="12"/>
         <text class="svgt" x="36" y="59">WIM sensor</text>
-        <text class="svgt-dim" x="36" y="74">axle load · 38.2 t</text>
+        <text class="svgt-dim" x="36" y="74">axle load, 38.2 t</text>
         <rect class="node-c" x="20" y="103" width="148" height="44" rx="12"/>
         <text class="svgt" x="36" y="122">ANPR camera</text>
         <text class="svgt-dim" x="36" y="137">plate capture</text>
         <rect class="node-c" x="20" y="166" width="148" height="44" rx="12"/>
         <text class="svgt" x="36" y="185">FASTag</text>
-        <text class="svgt-dim" x="36" y="200">txn · vehicle class</text>
+        <text class="svgt-dim" x="36" y="200">txn, vehicle class</text>
         <path class="flow" d="M168 62 C 220 62, 230 118, 264 122"/>
         <path class="flow" d="M168 125 L 264 125"/>
         <path class="flow" d="M168 188 C 220 188, 230 132, 264 128"/>
@@ -715,7 +715,7 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
     </div>
     <div class="chips">
       <span class="tag">Python</span><span class="tag">PySpark</span><span class="tag">Structured Streaming</span>
-      <span class="tag">Delta Lake</span><span class="tag">Machine Learning</span><span class="tag">WIM · ANPR · FASTag</span>
+      <span class="tag">Delta Lake</span><span class="tag">Machine Learning</span><span class="tag">WIM, ANPR, FASTag</span>
     </div>
   </article>
 
@@ -831,7 +831,7 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
       <div class="cert-mark" aria-hidden="true">N</div>
       <h3>Privacy &amp; Security in Online Social Media</h3>
       <p class="org">NPTEL</p>
-      <p class="date">Issued — add year</p>
+      <p class="date">Issued 2024</p>
       <a class="btn btn-ghost btn-sm magnetic" href="#" target="_blank" rel="noopener">Verify credential ↗</a>
     </div>
   </div>
@@ -855,7 +855,7 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
           <span class="badge">Internship</span>
         </div>
         <p class="org">National Highways Authority of India (NHAI)</p>
-        <p class="when-loc">Jun 2025 – Aug 2025 · New Delhi, India</p>
+        <p class="when-loc">Jun 2025 to Aug 2025, New Delhi, India</p>
       </div>
     </div>
     
@@ -937,7 +937,7 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
   </header>
   <div class="contact-grid">
     <div class="c-left glass reveal">
-      <h3>Hiring, collaborating, or just curious — my inbox is open.</h3>
+      <h3>Hiring, collaborating, or just curious. My inbox is open.</h3>
       <p class="c-sub">I reply fastest to email. Tell me what you're building and where I might fit.</p>
       <!-- Replace with your real email everywhere it appears -->
       <div class="c-row">
@@ -949,7 +949,7 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
         <a class="btn btn-ghost btn-sm magnetic" href="https://www.linkedin.com/in/purrnanssh/" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
       <div class="c-resume">
-        <a class="btn btn-primary magnetic" href="./Purrnanssh_Gen_CV.pdf" target="_blank" rel="noopener noreferrer">Download Resumé (PDF)</a>
+        <a class="btn btn-primary magnetic" href="./Purrnanssh_Gen_CV.pdf" target="_blank" rel="noopener noreferrer">Download Resumé</a>
       </div>
     </div>
     <form id="contactForm" class="glass reveal" novalidate>
@@ -966,7 +966,7 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
         <textarea class="field" id="f-msg" name="message" required></textarea>
       </div>
       <button class="btn btn-primary magnetic" type="submit">Send message</button>
-      <p class="form-note">Opens your mail app — no servers, no tracking.</p>
+      <p class="form-note">Opens your mail app. No servers. No tracking.</p>
     </form>
   </div>
 </section>
