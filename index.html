@@ -245,7 +245,10 @@ html[data-theme="light"] .icon-moon{ opacity:1; transform: scale(1) rotate(0); f
 html[data-theme="light"] .nav-pill {
   background: rgba(0, 0, 0, 0.10) !important;
   box-shadow: none !important;
-  border: none !important;
+  border: 2px solid transparent !important;
+  background-clip: border-box !important;
+  box-sizing: content-box !important;
+  margin: -2px 0 0 -2px !important;
 }
 
 /* ============================================================ BUTTONS */
