@@ -71,17 +71,17 @@ html[data-theme="dark"]{
 }
 html[data-theme="light"]{
   color-scheme: light;
-  --bg: #f4f4f6;
-  --text: #1d1d1f;
-  --text-2: rgba(29,29,31,.62);
-  --text-3: rgba(29,29,31,.42);
+  --bg: transparent;
+  --text: rgba(10,10,12,0.96);
+  --text-2: rgba(25,25,28,0.82);
+  --text-3: rgba(25,25,28,0.65);
   --text-ghost: rgba(29,29,31,.06);
-  --glass: rgba(255,255,255,.45);
-  --glass-strong: rgba(255,255,255,.7);
-  --card-solid: rgba(255,255,255,.55);
-  --stroke: rgba(29,29,31,.08);
-  --stroke-strong: rgba(29,29,31,.16);
-  --edge: rgba(255,255,255,.95);
+  --glass: rgba(255, 255, 255, 0.12);
+  --glass-strong: rgba(255, 255, 255, 0.20);
+  --card-solid: rgba(255, 255, 255, 0.15);
+  --stroke: rgba(255, 255, 255, 0.28);
+  --stroke-strong: rgba(255, 255, 255, 0.45);
+  --edge: rgba(255,255,255,.7);
   --specular: rgba(255,255,255,.6);
   --accent: #4A7AEE;
   --accent-2: #5B88F6;
@@ -257,6 +257,34 @@ html[data-theme="light"] .nav-pill {
     inset 0 1px 1px rgba(255,255,255,0.6),
     inset 0 0 0 1px rgba(100, 200, 255, 0.04),
     inset 0 -1px 0 1px rgba(200, 100, 255, 0.02);
+}
+
+html[data-theme="light"] .p-meta {
+  background: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(30px); backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+html[data-theme="light"] .light-glass-bg {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background-image: url('./assets/images/wallpaper_1.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+html[data-theme="light"] .light-glass-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+html[data-theme="light"] .light-glass-bg {
+  display: block;
 }
 
 /* ============================================================ BUTTONS */
@@ -555,6 +583,7 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
 </script>
 <!-- Ambient background removed -->
 <div class="noise" aria-hidden="true"></div>
+<div class="light-glass-bg" aria-hidden="true"></div>
 
 <!-- ============================================================ NAV -->
 <nav class="nav" aria-label="Primary">
