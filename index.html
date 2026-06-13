@@ -65,6 +65,7 @@ html[data-theme="dark"]{
   --pill-glow: rgba(255,255,255,0.03);
   --pill-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 2px 6px rgba(0,0,0,0.15);
   --nav-link-color: var(--text-2);
+  --text-body: var(--text-2);
   --theme-btn-bg: var(--glass);
   --theme-btn-shadow: none;
 }
@@ -103,6 +104,7 @@ html[data-theme="light"]{
   --pill-glow: rgba(255,255,255,0);
   --pill-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04);
   --nav-link-color: rgba(29,29,31,0.68);
+  --text-body: rgba(29, 29, 31, 0.76);
   --theme-btn-bg: #ffffff;
   --theme-btn-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
 }
@@ -164,7 +166,7 @@ section[id]::before {
 h2{
   font-size: clamp(2rem, 4.2vw, 2.9rem); font-weight: 650;
   letter-spacing: -0.032em; line-height: 1.06 }
-.lede{ margin-top: 16px; color: var(--text-2); font-size: 17px; max-width: 56ch }
+.lede{ margin-top: 16px; color: var(--text-body); font-size: 17px; max-width: 56ch }
 
 /* ============================================================ GLASS MATERIAL */
 .glass{
@@ -263,7 +265,7 @@ html[data-theme="light"] .icon-moon{ opacity:1; transform: scale(1) rotate(0); f
 h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.042em; line-height:1.02 }
 .grad{ background: linear-gradient(92deg, var(--accent), var(--accent-2));
   -webkit-background-clip:text; background-clip:text; color:transparent }
-.hero .sub{ margin-top:24px; font-size:17.5px; color:var(--text-2); max-width:54ch }
+.hero .sub{ margin-top:24px; font-size:17.5px; color:var(--text-body); max-width:54ch }
 .cta-row{ display:flex; flex-wrap:wrap; gap:14px; margin-top:36px }
 .social-row{ display:flex; gap:22px; margin-top:34px; font-family:var(--mono); font-size:13px }
 .social-row a{ color:var(--text-3); transition:color .25s }
@@ -294,7 +296,7 @@ h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.04
 /* ============================================================ ABOUT */
 .about-grid{ display:grid; grid-template-columns: 1.15fr .85fr; gap:24px; align-items:start }
 .about-copy p{ 
-  color:var(--text-2); 
+  color:var(--text-body); 
   font-size:16.5px; 
   line-height:1.7; 
   text-align:justify; 
@@ -325,7 +327,7 @@ h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.04
 .project-top{ display:flex; justify-content:space-between; gap:24px; align-items:flex-start; flex-wrap:wrap }
 .project h3{ font-size: clamp(1.5rem,2.5vw,2rem); font-weight:650; letter-spacing:-0.03em; line-height:1.1 }
 .project .tagline{ margin-top:8px; color:var(--accent-ink); font-weight:550; font-size:15px }
-.project .desc{ margin-top:12px; color:var(--text-2); max-width:64ch; font-size: 14.5px; line-height: 1.5; }
+.project .desc{ margin-top:12px; color:var(--text-body); max-width:64ch; font-size: 14.5px; line-height: 1.5; }
 .plinks{ display:flex; gap:10px; flex-shrink:0 }
 .viz{ margin:20px 0 20px; border-radius:22px; border:1px solid var(--stroke); background:var(--card-solid); overflow:hidden; }
 .viz svg{ display:block; width:100%; height:auto }
@@ -340,7 +342,7 @@ h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.04
 .factbox{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--stroke); border:1px solid var(--stroke); border-radius:20px; overflow:hidden; flex-grow: 1; }
 .factcell{ background:var(--card-solid); padding:20px; display:flex; flex-direction:column; justify-content:flex-start; }
 .factcell h4{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); margin-bottom:8px; font-weight:600 }
-.factcell p{ font-size:13px; color:var(--text-2); line-height:1.6; margin:0 }
+.factcell p{ font-size:13px; color:var(--text-body); line-height:1.6; margin:0 }
 .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:18px }
 .tag{ font-family:var(--mono); font-size:12px; padding:7px 13px; border-radius:999px;
   background:var(--glass); border:1px solid var(--stroke); color:var(--text-2) }
@@ -363,7 +365,7 @@ h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.04
 .exp-meta .when-loc { font-family: var(--mono); font-size: 12.5px; color: var(--text-3); }
 .exp-achievements { display: flex; flex-direction: column; gap: 20px; margin-bottom: 24px; max-width: 68ch; }
 .achieve-item h4 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; letter-spacing: -0.01em; }
-.achieve-item p { font-size: 14.5px; color: var(--text-2); line-height: 1.6; }
+.achieve-item p { font-size: 14.5px; color: var(--text-body); line-height: 1.6; }
 .exp-skills { margin-top: 0; padding-top: 24px; border-top: 1px solid var(--stroke); }
 
 /* ============================================================ SKILLS */
@@ -397,15 +399,15 @@ h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.04
 .edu-card .edu-label{ font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; color:var(--accent-ink);
   text-transform:uppercase; margin-bottom:18px }
 .edu-card h3{ font-size:17.5px; font-weight:640; letter-spacing:-0.015em; line-height:1.3; margin-bottom:6px; }
-.edu-card p{ font-size:14.5px; color:var(--text-2); margin-top:2px; }
-.edu-card .course{ font-size: 14.5px; font-weight: 500; color: var(--text-2); margin-top: 18px; }
+.edu-card p{ font-size:14.5px; color:var(--text-body); margin-top:2px; }
+.edu-card .course{ font-size: 14.5px; font-weight: 500; color: var(--text-body); margin-top: 18px; }
 .edu-card .score{ font-size: 16px; font-weight: 650; color: var(--text); margin-top: 8px; }
 
 /* ============================================================ CONTACT */
 .contact-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:22px; align-items:start }
 .c-left{ padding:36px; border-radius:28px }
 .c-left h3{ font-size: clamp(1.6rem,3vw,2.1rem); font-weight:650; letter-spacing:-0.03em; line-height:1.12 }
-.c-left .c-sub{ margin-top:12px; color:var(--text-2); font-size:15.5px }
+.c-left .c-sub{ margin-top:12px; color:var(--text-body); font-size:15.5px }
 .c-row{ display:flex; align-items:center; justify-content:space-between; gap:14px; margin-top:28px;
   padding:16px 20px; border-radius:18px; background:var(--card-solid); border:1px solid var(--stroke) }
 .c-row span{ font-family:var(--mono); font-size:13.5px }
