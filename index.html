@@ -275,18 +275,20 @@ h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.04
 .social-row a{ color:var(--text-3); transition:color .25s }
 .social-row a:hover{ color:var(--text) }
 
-.portrait-wrap{ perspective:1000px }
-.portrait{ aspect-ratio: 4/5; border-radius:30px; overflow:hidden; transition: transform .25s ease }
-.p-image{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; transition: transform 0.6s var(--ease-spring); }
-.portrait:hover .p-image{ transform: scale(1.04); }
+.portrait-wrap{ perspective:1200px; transform-style: preserve-3d; }
+.portrait{ aspect-ratio: 4/5; border-radius:30px; overflow:hidden; will-change: transform; box-shadow: var(--shadow-card); }
+.p-image{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; will-change: transform; transform: scale(1.1); }
 .p-overlay{ position:absolute; inset:0; pointer-events:none; z-index:1;
   background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 40%),
               linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 40%);
   box-shadow: inset 0 0 30px rgba(0,0,0,0.25); }
+.p-sheen{ position:absolute; inset:-150%; pointer-events:none; z-index:2;
+  background:radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 40%);
+  mix-blend-mode:overlay; opacity:0; will-change: transform; }
 .p-meta{ position:absolute; left:14px; right:14px; bottom:14px; display:flex; justify-content:space-between;
   align-items:center; padding:13px 18px; border-radius:18px; background:var(--glass-strong);
   border:1px solid var(--stroke); -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px);
-  font-family:var(--mono); font-size:12px; z-index:2; }
+  font-family:var(--mono); font-size:12px; z-index:3; will-change: transform; }
 .p-meta b{ font-family:var(--sans); font-size:14px; font-weight:650; letter-spacing:-0.01em }
 .p-meta span{ color:var(--text-3) }
 
@@ -604,10 +606,11 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
     </div>
   </div>
   <div class="portrait-wrap reveal in">
-    <div class="portrait glass" data-tilt>
+    <div class="portrait glass" id="premium-portrait">
       <script>console.log("Loading profile image: assets/images/image.png");</script>
       <img src="assets/images/image.png" alt="Purrnanssh Profile" class="p-image" onload="console.log('Successfully loaded profile image: assets/images/image.png');" onerror="console.error('Failed to load profile image: assets/images/image.png'); this.style.display='none';">
       <div class="p-overlay" aria-hidden="true"></div>
+      <div class="p-sheen" aria-hidden="true"></div>
       <div class="p-meta"><b>Purrnanssh Sinha</b><span>Data Science • Analytics</span></div>
     </div>
   </div>
@@ -1122,6 +1125,72 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
         el.style.transform = 'translate(0,0)';
       });
     });
+  }
+
+  /* ---------- PREMIUM PORTRAIT PHYSICS ---------- */
+  var premPortrait = document.getElementById('premium-portrait');
+  if (premPortrait && !RM) {
+    var pImage = premPortrait.querySelector('.p-image');
+    var pMeta = premPortrait.querySelector('.p-meta');
+    var pSheen = premPortrait.querySelector('.p-sheen');
+    
+    var ppHovering = false;
+    var ppMouseX = 0, ppMouseY = 0;
+    
+    premPortrait.addEventListener('pointerenter', function() { ppHovering = true; });
+    premPortrait.addEventListener('pointerleave', function() { ppHovering = false; });
+    premPortrait.addEventListener('pointermove', function(e) {
+      var rect = premPortrait.getBoundingClientRect();
+      ppMouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      ppMouseY = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+    });
+
+    var ppRotX = 0, ppRotY = 0;
+    var ppTargetX = 0, ppTargetY = 0;
+    
+    function ppLoop() {
+      var t = Date.now();
+      
+      if (ppHovering) {
+        ppTargetX = -ppMouseY * 10;
+        ppTargetY = ppMouseX * 10;
+      } else {
+        ppTargetX = Math.sin(t / 2300) * 2.5 + Math.cos(t / 3100) * 1.5;
+        ppTargetY = Math.cos(t / 1900) * 2.5 + Math.sin(t / 2700) * 1.5;
+      }
+      
+      var lerp = ppHovering ? 0.08 : 0.03;
+      ppRotX += (ppTargetX - ppRotX) * lerp;
+      ppRotY += (ppTargetY - ppRotY) * lerp;
+      
+      var baseScale = ppHovering ? 1.02 : 1.0 + (Math.sin(t / 4000) * 0.015);
+      
+      premPortrait.style.transform = 'perspective(1200px) rotateX(' + ppRotX + 'deg) rotateY(' + ppRotY + 'deg) scale(' + baseScale + ')';
+      
+      if (pImage) {
+        var imgX = -ppRotY * 1.5;
+        var imgY = ppRotX * 1.5;
+        pImage.style.transform = 'scale(1.15) translate3d(' + imgX + 'px, ' + imgY + 'px, 0)';
+      }
+      
+      if (pMeta) {
+        var metaX = ppRotY * 2;
+        var metaY = -ppRotX * 2;
+        pMeta.style.transform = 'translate3d(' + metaX + 'px, ' + metaY + 'px, 0)';
+      }
+      
+      if (pSheen) {
+        var sheenX = ppRotY * 12;
+        var sheenY = -ppRotX * 12;
+        var sheenOpacity = ppHovering ? 0.7 : 0.3 + (Math.sin(t / 2000) * 0.15);
+        pSheen.style.transform = 'translate3d(' + sheenX + 'px, ' + sheenY + 'px, 0)';
+        pSheen.style.opacity = sheenOpacity;
+      }
+      
+      requestAnimationFrame(ppLoop);
+    }
+    
+    ppLoop();
   }
 
   /* ---------- SCROLL REVEALS ---------- */
