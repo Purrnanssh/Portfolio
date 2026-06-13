@@ -99,7 +99,7 @@ html[data-theme="light"]{
   --nav-border: rgba(0,0,0,0.08);
   --nav-inner-glow: rgba(255,255,255,0.5);
   --nav-shadow: 0 32px 80px rgba(0,0,0,0.12), 0 12px 32px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
-  --pill-glass: rgb(20, 20, 20);
+  --pill-glass: rgb(130, 130, 130);
   --pill-edge-t: rgba(255,255,255,0.25);
   --pill-glow: rgba(255,255,255,0.03);
   --pill-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 2px 6px rgba(0,0,0,0.15);
@@ -241,7 +241,8 @@ html[data-theme="light"] .icon-sun{ opacity:0; transform: scale(0.4) rotate(90de
 html[data-theme="light"] .icon-moon{ opacity:1; transform: scale(1) rotate(0); filter: drop-shadow(0 0 2px rgba(0,0,0,0.1)); }
 ::view-transition-old(root), ::view-transition-new(root){ animation-duration:.55s }
 /* ============================================================ LIGHT MODE OVERRIDES */
-html[data-theme="light"] .nav-links a.active { color: #ffffff !important; font-weight: 500; }
+html[data-theme="light"] .nav-links a.active,
+html[data-theme="light"] .brand.active { color: #ffffff !important; font-weight: 500; }
 
 /* ============================================================ BUTTONS */
 
