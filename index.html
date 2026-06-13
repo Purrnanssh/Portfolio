@@ -241,6 +241,13 @@ html[data-theme="light"] .icon-sun{ opacity:0; transform: scale(0.4) rotate(90de
 html[data-theme="light"] .icon-moon{ opacity:1; transform: scale(1) rotate(0); filter: drop-shadow(0 0 2px rgba(0,0,0,0.1)); }
 ::view-transition-old(root), ::view-transition-new(root){ animation-duration:.55s }
 
+/* ============================================================ LIGHT MODE OVERRIDES */
+html[data-theme="light"] .nav-pill {
+  background: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
 /* ============================================================ BUTTONS */
 .btn{ display:inline-flex; align-items:center; gap:9px; padding:14px 24px; border-radius:999px;
   font-size:15px; font-weight:600; letter-spacing:-0.01em; cursor:pointer; border:1px solid transparent;
