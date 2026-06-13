@@ -71,7 +71,7 @@ html[data-theme="dark"]{
 }
 html[data-theme="light"]{
   color-scheme: light;
-  --bg: transparent;
+  --bg: #f4f4f6;
   --text: rgba(10,10,12,0.96);
   --text-2: rgba(25,25,28,0.82);
   --text-3: rgba(25,25,28,0.65);
@@ -107,6 +107,9 @@ html[data-theme="light"]{
   --text-body: rgba(29, 29, 31, 0.76);
   --theme-btn-bg: #ffffff;
   --theme-btn-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
+}
+html[data-theme="light"] body {
+  background-color: transparent !important;
 }
 
 /* ============================================================ PRELOADER */
@@ -266,14 +269,13 @@ html[data-theme="light"] .p-meta {
 }
 
 html[data-theme="light"] .light-glass-bg {
-  display: none;
+  display: block;
   position: fixed;
-  inset: 0;
-  z-index: -3;
-  background-image: url('./assets/images/wallpaper_1.jpeg');
+  inset: -2%;
+  z-index: -2;
+  background-image: url('assets/images/wallpaper_1.jpeg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
 }
 html[data-theme="light"] .light-glass-bg::after {
   content: '';
