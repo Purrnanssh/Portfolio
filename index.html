@@ -71,16 +71,16 @@ html[data-theme="dark"]{
 }
 html[data-theme="light"]{
   color-scheme: light;
-  --bg: #f4f4f6;
-  --text: #1d1d1f;
-  --text-2: rgba(29,29,31,.62);
-  --text-3: rgba(29,29,31,.42);
+  --bg: transparent;
+  --text: rgba(10,10,12,0.96);
+  --text-2: rgba(25,25,28,0.65);
+  --text-3: rgba(25,25,28,0.45);
   --text-ghost: rgba(29,29,31,.06);
-  --glass: rgba(255,255,255,.45);
-  --glass-strong: rgba(255,255,255,.7);
-  --card-solid: rgba(255,255,255,.55);
-  --stroke: rgba(29,29,31,.08);
-  --stroke-strong: rgba(29,29,31,.16);
+  --glass: rgba(255,255,255,.18);
+  --glass-strong: rgba(255,255,255,.25);
+  --card-solid: rgba(255,255,255,.18);
+  --stroke: rgba(255,255,255,.35);
+  --stroke-strong: rgba(255,255,255,.5);
   --edge: rgba(255,255,255,.95);
   --specular: rgba(255,255,255,.6);
   --accent: #4A7AEE;
@@ -88,25 +88,57 @@ html[data-theme="light"]{
   --accent-ink: #4A7AEE;
   --pulse-glow: rgba(74,122,238,0.45);
   --pulse-0: rgba(74,122,238,0);
-  --shadow-card: 0 24px 60px rgba(29,29,31,.05);
-  --shadow-pop: 0 30px 80px rgba(29,29,31,.09);
+  --shadow-card: 0 12px 40px rgba(0,0,0,0.08);
+  --shadow-pop: 0 20px 60px rgba(0,0,0,0.12);
   --blob1: rgba(0,0,0,.03);
   --blob2: rgba(0,0,0,.02);
-  --noise-o: .022;
-  --nav-glass: rgba(255, 255, 255, 0.82);
+  --noise-o: .015;
+  --nav-glass: rgba(255,255,255,0.22);
   --nav-edge-t: rgba(255,255,255,0.95);
-  --nav-edge-b: rgba(255,255,255,0.4);
-  --nav-border: rgba(0,0,0,0.06);
-  --nav-inner-glow: rgba(255,255,255,0.6);
-  --nav-shadow: 0 16px 40px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
-  --pill-glass: #ffffff;
-  --pill-edge-t: #ffffff;
+  --nav-edge-b: rgba(255,255,255,0.2);
+  --nav-border: rgba(255,255,255,0.5);
+  --nav-inner-glow: rgba(255,255,255,0.4);
+  --nav-shadow: 0 16px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  --pill-glass: rgba(255,255,255,0.35);
+  --pill-edge-t: rgba(255,255,255,0.8);
   --pill-glow: rgba(255,255,255,0);
   --pill-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04);
   --nav-link-color: rgba(29,29,31,0.68);
-  --text-body: rgba(29, 29, 31, 0.76);
-  --theme-btn-bg: #ffffff;
-  --theme-btn-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
+  --text-body: rgba(25,25,28,0.82);
+  --theme-btn-bg: rgba(255,255,255,0.45);
+  --theme-btn-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+html[data-theme="light"] body::before {
+  content: ''; position: fixed; inset: -5%; z-index: -3;
+  background: url('assets/images/AppleMagazine.com-macOS-Catalina-Wallpaper-4.jpeg') center/cover;
+  animation: bg-drift 25s infinite alternate ease-in-out;
+  transition: opacity 0.35s ease;
+}
+html[data-theme="light"] body::after {
+  content: ''; position: fixed; inset: 0; z-index: -2;
+  background: rgba(255,255,255,0.18);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  backdrop-filter: blur(18px) saturate(180%);
+  transition: opacity 0.35s ease;
+}
+@keyframes bg-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-10px, 10px) scale(1.02); }
+}
+/* Caustics layer */
+.caustics { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 0.35s ease; }
+html[data-theme="light"] .caustics {
+  opacity: 0.03;
+  background: radial-gradient(circle at 20% 30%, #fff 0%, transparent 40%),
+              radial-gradient(circle at 80% 70%, #fff 0%, transparent 40%);
+  animation: caustic-shift 25s infinite alternate ease-in-out;
+}
+@keyframes caustic-shift {
+  0% { transform: scale(1) translate(0,0); }
+  100% { transform: scale(1.2) translate(-20px, 20px); }
+}
+html[data-theme="light"] .glass {
+  -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px);
 }
 
 /* ============================================================ PRELOADER */
@@ -240,6 +272,65 @@ html[data-theme="dark"]  .icon-moon{ opacity:0; transform: scale(0.4) rotate(-90
 html[data-theme="light"] .icon-sun{ opacity:0; transform: scale(0.4) rotate(90deg); }
 html[data-theme="light"] .icon-moon{ opacity:1; transform: scale(1) rotate(0); filter: drop-shadow(0 0 2px rgba(0,0,0,0.1)); }
 ::view-transition-old(root), ::view-transition-new(root){ animation-duration:.55s }
+
+/* ============================================================ LIGHT MODE OVERRIDES */
+html[data-theme="light"] .island-bg.glass,
+html[data-theme="light"] .nav-ecosystem {
+  box-shadow: 
+    inset 0 1px 1px var(--nav-edge-t), 
+    inset 0 0 20px var(--nav-inner-glow), 
+    inset 0 -1px 1px var(--nav-edge-b), 
+    inset 0 0 0 1px rgba(100, 200, 255, 0.1), 
+    inset 0 -1px 0 1px rgba(200, 100, 255, 0.08),
+    var(--nav-shadow);
+  overflow: hidden;
+}
+html[data-theme="light"] .island-bg.glass::before,
+html[data-theme="light"] .nav-ecosystem::before {
+  content: ''; position: absolute; inset: 0; z-index: 0; border-radius: inherit;
+  background: radial-gradient(circle at 0% 50%, rgba(255,255,255,0.3) 0%, transparent 40%);
+  animation: nav-bloom 12s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+@keyframes nav-bloom {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(150%); }
+}
+
+html[data-theme="light"] .nav-pill {
+  box-shadow: 
+    0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04),
+    inset 0 1px 1px rgba(255,255,255,0.8),
+    inset 0 0 0 1px rgba(100, 200, 255, 0.15),
+    inset 0 -1px 0 1px rgba(200, 100, 255, 0.1);
+  overflow: hidden;
+}
+html[data-theme="light"] .nav-pill::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  background: radial-gradient(circle at 0% 50%, rgba(255,255,255,0.4) 0%, transparent 50%);
+  animation: nav-bloom 10s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
+html[data-theme="light"] .p-meta {
+  background: rgba(255, 255, 255, 0.25);
+  -webkit-backdrop-filter: blur(30px); backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1), inset 0 1px 1px rgba(255,255,255,0.8), inset 0 -1px 1px rgba(255,255,255,0.4), inset 0 0 0 1px rgba(100, 200, 255, 0.1), inset 0 -1px 0 rgba(200, 100, 255, 0.08);
+}
+html[data-theme="light"] .p-meta b { color: rgba(10,10,12,0.96); }
+html[data-theme="light"] .p-meta span { color: rgba(25,25,28,0.82); }
+
+html[data-theme="light"] .btn-primary {
+  background: rgba(255,255,255,0.45);
+  -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.5);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+html[data-theme="light"] .btn-primary:hover {
+  background: rgba(255,255,255,0.6);
+}
 
 /* ============================================================ BUTTONS */
 .btn{ display:inline-flex; align-items:center; gap:9px; padding:14px 24px; border-radius:999px;
@@ -537,6 +628,7 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
 </script>
 <!-- Ambient background removed -->
 <div class="noise" aria-hidden="true"></div>
+<div class="caustics" aria-hidden="true"></div>
 
 <!-- ============================================================ NAV -->
 <nav class="nav" aria-label="Primary">
