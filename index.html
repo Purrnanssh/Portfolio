@@ -541,11 +541,11 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
   </div>
 </nav>
 
-<main id="top">
+<main>
 <div class="wrap">
 
 <!-- ============================================================ HERO -->
-<section class="hero" aria-label="Introduction">
+<section id="top" class="hero" aria-label="Introduction">
   <div class="reveal in">
     <span class="status"><i aria-hidden="true"></i>Open to internships &amp; research collaborations</span>
     <h1>Data science,<br><span class="grad">beyond dashboards.</span></h1>
@@ -1114,15 +1114,18 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
 
   /* ---------- LIQUID GLASS ECOSYSTEM (FLYING PILL) ---------- */
   var navEco = document.querySelector('.nav-ecosystem');
-  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
-  var allTargets = Array.prototype.slice.call(document.querySelectorAll('.nav-ecosystem .brand, .nav-ecosystem .nav-links a, .nav-ecosystem .theme-btn, .nav-ecosystem .btn-sm'));
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-ecosystem .brand, .nav-ecosystem .nav-links a, a[href="#contact"]'));
+  var allTargets = Array.prototype.slice.call(document.querySelectorAll('.nav-ecosystem .brand, .nav-ecosystem .nav-links a, .nav-ecosystem .theme-btn, a[href="#contact"]'));
   
   var pill = document.createElement('div');
   pill.className = 'nav-pill';
   if(navEco) navEco.appendChild(pill);
   
   var map = {};
-  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  links.forEach(function(a){ 
+    var href = a.getAttribute('href');
+    if(href && href.startsWith('#')) map[href.slice(1)] = a; 
+  });
   var activeLink = null;
   var hoverTarget = null;
   var moveTimer = null;
@@ -1177,11 +1180,31 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
   var isClickScrolling = false;
   var scrollTimeout = null;
 
-  var sio = new IntersectionObserver(function(entries){
+  var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
+  
+  var checkActiveSection = function() {
     if (isClickScrolling) return;
-    entries.forEach(function(en){
-      var a = map[en.target.id];
-      if (a && en.isIntersecting) {
+    
+    var center = window.innerHeight / 2;
+    var currentActive = null;
+    
+    if (window.scrollY < 100) {
+      currentActive = document.getElementById('top');
+    } else if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+      currentActive = document.getElementById('contact');
+    } else {
+      for (var i = 0; i < sections.length; i++) {
+        var rect = sections[i].getBoundingClientRect();
+        if (rect.top <= center && rect.bottom >= center) {
+          currentActive = sections[i];
+          break;
+        }
+      }
+    }
+    
+    if (currentActive) {
+      var a = map[currentActive.id];
+      if (a && a !== activeLink) {
         if(!hoverTarget) updatePill(a, false, false);
         else {
           activeLink = a;
@@ -1189,9 +1212,12 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
           a.classList.add('active');
         }
       }
-    });
-  }, { rootMargin: '-42% 0px -52% 0px' });
-  document.querySelectorAll('main section[id]').forEach(function(s){ sio.observe(s); });
+    }
+  };
+
+  window.addEventListener('scroll', checkActiveSection, {passive: true});
+  window.addEventListener('resize', checkActiveSection, {passive: true});
+  checkActiveSection();
 
   links.forEach(function(link){
     link.addEventListener('click', function(e){
