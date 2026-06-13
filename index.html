@@ -349,6 +349,8 @@ h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.04
 .exp-card-header { display: flex; gap: 18px; align-items: flex-start; }
 .exp-logo { width: 56px; height: 56px; border-radius: 12px; background: var(--card-solid); display: flex; align-items: center; justify-content: center; border: 1px solid var(--stroke); flex-shrink: 0; color: var(--text-2); }
 .exp-logo svg { width: 28px; height: 28px; }
+.org-badge { margin-left: auto; padding: 6px 14px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.org-logo { height: 20px; width: auto; filter: grayscale(1) invert(0.85) opacity(0.75); pointer-events: none; mix-blend-mode: screen; }
 .exp-meta { display: flex; flex-direction: column; gap: 6px; padding-top: 2px; }
 .exp-title-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .exp-title-row h3 { font-size: 1.4rem; font-weight: 650; letter-spacing: -0.02em; }
@@ -854,8 +856,11 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
           <h3>Data Science Intern</h3>
           <span class="badge">Internship</span>
         </div>
-        <p class="org">National Highways Authority of India</p>
+        <p class="org">National Highways Authority of India (NHAI)</p>
         <p class="when-loc">Jun 2025 – Aug 2025 · New Delhi, India</p>
+      </div>
+      <div class="org-badge glass" aria-label="NHAI Logo">
+        <img src="assets/icons/nhai-logo.svg" alt="NHAI" class="org-logo">
       </div>
     </div>
     
