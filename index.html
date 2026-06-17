@@ -864,9 +864,9 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
       const btnNext = document.getElementById('btnNextProj');
       if(!carousel || !btnPrev || !btnNext) return;
       
-      const updateNav = () => {
-        const isAtStart = carousel.scrollLeft <= 10;
-        const isAtEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10;
+      const setNavState = (scrollPos) => {
+        const isAtStart = scrollPos <= 10;
+        const isAtEnd = scrollPos + carousel.clientWidth >= carousel.scrollWidth - 10;
         
         btnPrev.style.opacity = isAtStart ? '0.4' : '1';
         btnPrev.style.cursor = isAtStart ? 'default' : 'pointer';
@@ -876,9 +876,25 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
         btnNext.style.cursor = isAtEnd ? 'default' : 'pointer';
         btnNext.style.pointerEvents = isAtEnd ? 'none' : 'auto';
       };
+
+      const updateNav = () => {
+        if (carousel.dataset.isAnimating === "true") return;
+        setNavState(carousel.scrollLeft);
+      };
       
+      let scrollTimeout;
       const slideScroll = (dir) => {
+        carousel.dataset.isAnimating = "true";
+        const targetScroll = carousel.scrollLeft + dir * window.innerWidth;
+        setNavState(targetScroll);
+        
         carousel.scrollBy({left: dir * window.innerWidth, behavior: 'smooth'});
+        
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          carousel.dataset.isAnimating = "false";
+          updateNav();
+        }, 500);
       };
 
       btnPrev.addEventListener('click', () => slideScroll(-1));
