@@ -877,24 +877,23 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
         btnNext.style.pointerEvents = isAtEnd ? 'none' : 'auto';
       };
 
+      let scrollEndTimeout;
       const updateNav = () => {
-        if (carousel.dataset.isAnimating === "true") return;
-        setNavState(carousel.scrollLeft);
+        clearTimeout(scrollEndTimeout);
+        if (carousel.dataset.isAnimating !== "true") {
+          setNavState(carousel.scrollLeft);
+        }
+        scrollEndTimeout = setTimeout(() => {
+          carousel.dataset.isAnimating = "false";
+          setNavState(carousel.scrollLeft);
+        }, 100);
       };
       
-      let scrollTimeout;
       const slideScroll = (dir) => {
         carousel.dataset.isAnimating = "true";
         const targetScroll = carousel.scrollLeft + dir * window.innerWidth;
         setNavState(targetScroll);
-        
         carousel.scrollBy({left: dir * window.innerWidth, behavior: 'smooth'});
-        
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          carousel.dataset.isAnimating = "false";
-          updateNav();
-        }, 500);
       };
 
       btnPrev.addEventListener('click', () => slideScroll(-1));
