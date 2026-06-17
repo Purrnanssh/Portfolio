@@ -287,6 +287,16 @@ html[data-theme="light"] .apple-greeting {
   opacity: 1;
   transform: translateY(0);
 }
+.apple-identity {
+  font-family: var(--sans);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  color: var(--text);
+  margin-bottom: 18px;
+  display: block;
+}
 .status{ display:inline-flex; align-items:center; gap:9px; padding:8px 16px; border-radius:999px;
   font-family:var(--mono); font-size:12px; letter-spacing:.04em; color:var(--text-2);
   background:var(--glass); border:1px solid var(--stroke); margin-bottom:28px;
@@ -619,7 +629,8 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
     <div class="apple-greeting" aria-hidden="true">
       <span id="greeting-text" class="greeting-text">Hello</span>
     </div>
-    <span class="status">Purrnanssh Sinha • Data Science • Analytics</span>
+    <div class="apple-identity">Purrnanssh Sinha</div>
+    <span class="status">Data Science • Analytics</span>
     <h1>Data science,<br><span class="grad">beyond dashboards.</span></h1>
     <p class="sub">Computer Science undergraduate specialising in Data Science. Building analytics platforms, data pipelines, and intelligent systems for real-world infrastructure and operations.</p>
     <div class="cta-row">
