@@ -877,45 +877,12 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
         btnNext.style.pointerEvents = isAtEnd ? 'none' : 'auto';
       };
       
-      let isTransitioning = false;
-      const fadeScroll = (dir) => {
-        if (isTransitioning) return;
-        isTransitioning = true;
-        
-        const performScroll = () => {
-          carousel.scrollBy({left: dir * window.innerWidth, behavior: 'auto'});
-          updateNav();
-        };
-
-        if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          document.documentElement.style.viewTransitionName = 'none';
-          carousel.style.viewTransitionName = 'projects-carousel';
-          const transition = document.startViewTransition(performScroll);
-          transition.finished.then(() => {
-            document.documentElement.style.viewTransitionName = '';
-            carousel.style.viewTransitionName = '';
-            isTransitioning = false;
-          }).catch(() => {
-            document.documentElement.style.viewTransitionName = '';
-            carousel.style.viewTransitionName = '';
-            isTransitioning = false;
-          });
-        } else {
-          carousel.style.transition = 'opacity 0.1s ease';
-          carousel.style.opacity = '0';
-          setTimeout(() => {
-            performScroll();
-            carousel.style.opacity = '1';
-            setTimeout(() => {
-              carousel.style.transition = '';
-              isTransitioning = false;
-            }, 150);
-          }, 100);
-        }
+      const slideScroll = (dir) => {
+        carousel.scrollBy({left: dir * window.innerWidth, behavior: 'smooth'});
       };
 
-      btnPrev.addEventListener('click', () => fadeScroll(-1));
-      btnNext.addEventListener('click', () => fadeScroll(1));
+      btnPrev.addEventListener('click', () => slideScroll(-1));
+      btnNext.addEventListener('click', () => slideScroll(1));
       
       carousel.addEventListener('scroll', updateNav, {passive: true});
       window.addEventListener('resize', updateNav, {passive: true});
