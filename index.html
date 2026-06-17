@@ -260,6 +260,33 @@ html[data-theme="light"] .brand.pill-target { color: #ffffff !important; font-we
 /* ============================================================ HERO */
 .hero{ min-height:100svh; display:grid; grid-template-columns: 1.08fr .92fr; align-items:center;
   gap: clamp(32px,5vw,72px); padding: 40px 0 140px }
+.apple-greeting {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 24px;
+  pointer-events: none;
+}
+html[data-theme="light"] .apple-greeting {
+  display: none;
+}
+.greeting-text {
+  font-family: var(--sans);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  color: rgba(255,255,255,0.92);
+  display: block;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  will-change: opacity, transform;
+}
+.greeting-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 .status{ display:inline-flex; align-items:center; gap:9px; padding:8px 16px; border-radius:999px;
   font-family:var(--mono); font-size:12px; letter-spacing:.04em; color:var(--text-2);
   background:var(--glass); border:1px solid var(--stroke); margin-bottom:28px;
@@ -588,7 +615,10 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
 
 <!-- ============================================================ HERO -->
 <section id="top" class="hero" aria-label="Introduction">
-  <div class="reveal in">
+  <div class="reveal in" style="position: relative;">
+    <div class="apple-greeting" aria-hidden="true">
+      <span id="greeting-text" class="greeting-text">Hello</span>
+    </div>
     <span class="status"><i aria-hidden="true"></i>Open to internships &amp; research collaborations</span>
     <h1>Data science,<br><span class="grad">beyond dashboards.</span></h1>
     <p class="sub">Computer Science undergraduate specialising in Data Science. Building analytics platforms, data pipelines, and intelligent systems for real-world infrastructure and operations.</p>
@@ -1373,6 +1403,34 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
 /* ---------- FOOTER YEAR ---------- */
   var y = document.getElementById('year');
   if (y) y.textContent = String(new Date().getFullYear());
+
+  /* ---------- APPLE GREETING ---------- */
+  (function(){
+    var greetings = [
+      "Hello", "Namaste", "Bonjour", "Hola", "こんにちは", 
+      "안녕하세요", "你好", "Ciao", "Marhaba"
+    ];
+    var el = document.getElementById('greeting-text');
+    if(!el) return;
+    var idx = 0;
+    
+    function cycleGreeting() {
+      el.classList.remove('visible');
+      setTimeout(function() {
+        idx = (idx + 1) % greetings.length;
+        el.textContent = greetings[idx];
+        setTimeout(function() {
+          el.classList.add('visible');
+        }, 50);
+      }, 500);
+    }
+    
+    setTimeout(function() {
+      el.classList.add('visible');
+    }, 300);
+    
+    setInterval(cycleGreeting, 2800);
+  })();
 })();
 </script>
 </body>
