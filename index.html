@@ -370,7 +370,7 @@ h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.04
 .node-c{ fill:var(--glass-strong); stroke:var(--stroke-strong); stroke-width:1 }
 .node-a{ fill:var(--accent); opacity:.9 }
 .gridline{ stroke:var(--stroke); stroke-width:.5 }
-.factbox{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--stroke); border:1px solid var(--stroke); border-radius:20px; overflow:hidden; flex-grow: 1; }
+.factbox{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--stroke); border:1px solid var(--stroke); border-radius:20px; overflow:hidden; flex-grow: 1; -webkit-mask-image: -webkit-radial-gradient(white, black); transform: translateZ(0); }
 .factcell{ background:var(--card-solid); padding:20px; display:flex; flex-direction:column; justify-content:flex-start; }
 .factcell h4{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); margin-bottom:8px; font-weight:600 }
 .factcell p{ font-size:13px; color:var(--text-body); line-height:1.6; margin:0 }
