@@ -888,12 +888,15 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
         };
 
         if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.documentElement.style.viewTransitionName = 'none';
           carousel.style.viewTransitionName = 'projects-carousel';
           const transition = document.startViewTransition(performScroll);
           transition.finished.then(() => {
+            document.documentElement.style.viewTransitionName = '';
             carousel.style.viewTransitionName = '';
             isTransitioning = false;
           }).catch(() => {
+            document.documentElement.style.viewTransitionName = '';
             carousel.style.viewTransitionName = '';
             isTransitioning = false;
           });
