@@ -1445,13 +1445,13 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
 
     if (zoomInBtn && zoomOutBtn && mainEl) {
       zoomInBtn.addEventListener('click', function() {
-        if (currentZoom < 1.5) {
+        if (currentZoom < 1.19) { // Using 1.19 to avoid floating point issues when max is 1.2
           currentZoom += 0.1;
           mainEl.style.zoom = currentZoom;
         }
       });
       zoomOutBtn.addEventListener('click', function() {
-        if (currentZoom > 0.5) {
+        if (currentZoom > 1.01) { // Using 1.01 to avoid floating point issues when min is 1.0
           currentZoom -= 0.1;
           mainEl.style.zoom = currentZoom;
         }
