@@ -461,6 +461,9 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
 .foot > span:nth-child(2) { text-align: center; }
 .foot > span:nth-child(3) { text-align: right; }
 @media (max-width: 768px) {
+  /* Hide Zoom on Mobile */
+  .floating-zoom { display: none !important; }
+
   /* Footer */
   .foot { flex-direction: column; gap: 24px; justify-content: center; }
   .foot > span { text-align: center !important; }
