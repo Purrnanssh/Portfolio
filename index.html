@@ -338,6 +338,10 @@ h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.04
 .bento-card .fact b { font-weight: 600; font-size: 14.5px; }
 .bento-card .chip-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .bento-card .b-chip { padding: 6px 14px; border-radius: 999px; background: var(--glass-strong); border: 1px solid var(--stroke); font-size: 12.5px; font-weight: 500; color: var(--text-2); }
+.bento-card:not(.bio) { text-align: center; }
+.bento-card:not(.bio) h3 { text-align: left; align-self: flex-start; margin-bottom: 0; }
+.bento-card:not(.bio) > *:last-child { margin: auto 0; align-self: center; }
+.bento-card .chip-list { justify-content: center; margin-top: 0; }
 
 /* ============================================================ PROJECTS */
 .projects-carousel-wrap { position: relative; width: 100%; }
@@ -668,17 +672,17 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
       <p>I’m a Computer Science undergraduate bridging the gap between data science and software engineering. I build reliable pipelines, train models, and engineer systems that turn messy, real-world data into actionable value.</p>
       <p class="signature">Aggressive in execution. Relentless in improvement.</p>
     </div>
-    <div class="bento-card glass lift" style="justify-content: center;">
+    <div class="bento-card glass lift">
       <h3>Systems Thinker</h3>
       <p style="font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--text-2); letter-spacing: .05em;">Data × Software × Infrastructure</p>
     </div>
     
     <!-- Row 2 -->
-    <div class="bento-card bento-col-2 glass lift" style="justify-content: center;">
+    <div class="bento-card bento-col-2 glass lift">
       <h3>Building Toward</h3>
       <p style="font-size: 16px; color: var(--text-2);">Large-scale systems that solve real-world problems.</p>
     </div>
-    <div class="bento-card glass lift" style="justify-content: center;">
+    <div class="bento-card glass lift">
       <h3>Focus</h3>
       <div class="chip-list">
         <span class="b-chip">Data Science</span>
@@ -689,11 +693,11 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
     </div>
     
     <!-- Row 3 -->
-    <div class="bento-card glass lift" style="justify-content: center;">
+    <div class="bento-card glass lift">
       <h3>Philosophy</h3>
       <p style="font-size: 16px; color: var(--text-2);">Reliable beats complicated.</p>
     </div>
-    <div class="bento-card glass lift" style="justify-content: center;">
+    <div class="bento-card glass lift">
       <h3>Current Interests</h3>
       <div class="chip-list">
         <span class="b-chip">AI</span>
@@ -703,7 +707,7 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
         <span class="b-chip">Product Design</span>
       </div>
     </div>
-    <div class="bento-card glass lift" style="justify-content: center;">
+    <div class="bento-card glass lift">
       <h3>Beyond Tech</h3>
       <div class="chip-list">
         <span class="b-chip">Cricket</span>
