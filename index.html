@@ -177,11 +177,11 @@ h2{
   border: 1px solid var(--stroke);
   box-shadow: inset 0 1px 0 var(--edge), var(--shadow-card);
   border-radius: 26px;
-  transition: background .45s ease, border-color .45s ease, box-shadow .45s ease,
-              transform .5s var(--ease-spring);
+  transition: background .45s cubic-bezier(0.16, 1, 0.3, 1), border-color .45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .45s cubic-bezier(0.16, 1, 0.3, 1),
+              transform .5s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.glass.lift:hover{ transform: translateY(-6px); box-shadow: inset 0 1px 0 var(--edge), var(--shadow-pop);
-  border-color: var(--stroke-strong) }
+.glass.lift:hover{ transform: translateY(-4px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 12px 32px -12px rgba(0,0,0,0.5);
+  border-color: rgba(255,255,255,0.08) }
 
 /* ============================================================ NAV */
 .nav{ position:fixed; bottom:calc(24px + env(safe-area-inset-bottom, 0px)); left:50%; transform:translate3d(-50%, 0, 0); z-index:60; width:100%; max-width:1020px; will-change: transform; pointer-events: none; display: flex; justify-content: center; }
@@ -325,19 +325,29 @@ h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.04
 
 /* ============================================================ ABOUT BENTO */
 .bento-about { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.bento-card { background: var(--glass); border: 1px solid var(--stroke); border-radius: 26px; padding: 32px; display: flex; flex-direction: column; justify-content: flex-start; }
-.bento-card h3 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.8rem); font-weight: 600; letter-spacing: -0.018em; line-height: 1.15; margin-bottom: 12px; color: var(--text); opacity: 0.88; }
+.bento-card { background: var(--glass); border: 1px solid var(--stroke); border-radius: 26px; padding: 36px; display: flex; flex-direction: column; justify-content: flex-start; }
+.bento-card h3 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.8rem); font-weight: 600; letter-spacing: -0.018em; line-height: 1.15; margin-bottom: 20px; color: var(--text); opacity: 0.88; }
 .bento-card p { font-size: 14.5px; color: var(--text-body); line-height: 1.6; margin: 0; }
 .bento-col-2 { grid-column: span 2; }
 .bento-col-3 { grid-column: span 3; }
+
+.bento-card.bento-anchor { padding: 40px; justify-content: center; }
+.bento-card.bento-anchor h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 12px; }
+.bento-card.bento-anchor p { font-size: 18px; font-weight: 400; line-height: 1.5; color: var(--text); }
+
+.bento-card.bento-quote { align-items: center; justify-content: center; text-align: center; }
+.bento-card.bento-quote h3 { margin-bottom: 16px; align-self: center; text-align: center; }
+.bento-card.bento-quote p { font-size: 17px; font-weight: 400; color: var(--text); font-style: italic; }
+
+.bento-card.bio { padding: 40px; }
 .bento-card.bio p { font-size: 17px; line-height: 1.6; color: var(--text); font-weight: 400; }
 .bento-card.bio .signature { font-size: 14px; color: var(--accent); font-weight: 600; margin-top: auto; padding-top: 24px; }
 .bento-card .fact { display: flex; flex-direction: column; margin-bottom: 20px; }
 .bento-card .fact:last-child { margin-bottom: 0; }
 .bento-card .fact span { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 6px; }
 .bento-card .fact b { font-weight: 600; font-size: 14.5px; }
-.bento-card .chip-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-.bento-card .b-chip { padding: 6px 14px; border-radius: 999px; background: var(--glass-strong); border: 1px solid var(--stroke); font-size: 12.5px; font-weight: 500; color: var(--text-2); }
+.bento-card .chip-list { display: flex; flex-wrap: wrap; gap: 10px 12px; margin-top: 4px; }
+.bento-card .b-chip { padding: 8px 18px; border-radius: 999px; background: var(--glass-strong); border: 1px solid var(--stroke); font-size: 13px; font-weight: 500; color: var(--text-2); letter-spacing: 0.01em; }
 
 /* ============================================================ PROJECTS */
 .projects-carousel-wrap { position: relative; width: 100%; }
@@ -674,9 +684,9 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
     </div>
     
     <!-- Row 2 -->
-    <div class="bento-card bento-col-2 glass lift">
+    <div class="bento-card bento-col-2 glass lift bento-anchor">
       <h3>Building Toward</h3>
-      <p style="font-size: 16px; color: var(--text-2);">Large-scale systems that solve real-world problems.</p>
+      <p>Large-scale systems that solve real-world problems.</p>
     </div>
     <div class="bento-card glass lift">
       <h3>Focus</h3>
@@ -689,9 +699,9 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
     </div>
     
     <!-- Row 3 -->
-    <div class="bento-card glass lift">
+    <div class="bento-card glass lift bento-quote">
       <h3>Philosophy</h3>
-      <p style="font-size: 16px; color: var(--text-2);">Reliable beats complicated.</p>
+      <p>Reliable beats complicated.</p>
     </div>
     <div class="bento-card glass lift">
       <h3>Current Interests</h3>
