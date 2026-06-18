@@ -333,7 +333,7 @@ h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.04
 
 .bento-card.bento-anchor { padding: 40px; justify-content: center; }
 .bento-card.bento-anchor h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 12px; }
-.bento-card.bento-anchor p { font-size: 18px; font-weight: 400; line-height: 1.5; color: var(--text); }
+.bento-card.bento-anchor p { font-size: 19px; font-weight: 400; letter-spacing: -0.01em; line-height: 1.45; color: var(--text); }
 
 .bento-card.bio { padding: 40px; }
 .bento-card.bio p { font-size: 17px; line-height: 1.6; color: var(--text); font-weight: 400; }
@@ -348,6 +348,12 @@ h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.04
 .bento-card .v-list li { padding: 14px 0; border-bottom: 1px solid var(--stroke); font-size: 15px; font-weight: 500; color: var(--text-2); text-align: left; }
 .bento-card .v-list li:last-child { border-bottom: none; padding-bottom: 0; }
 .bento-card .v-list li:first-child { padding-top: 4px; }
+
+.bento-card .v-list.soft li { border: none; padding: 10px 0; font-weight: 400; color: var(--text-3); font-size: 15px; }
+.bento-card .v-list.soft li:first-child { padding-top: 4px; }
+
+.bento-card .v-list.personal li { border: none; padding: 16px 0; font-weight: 300; color: var(--text-2); font-size: 16px; letter-spacing: 0.02em; }
+.bento-card .v-list.personal li:first-child { padding-top: 6px; }
 
 /* ============================================================ PROJECTS */
 .projects-carousel-wrap { position: relative; width: 100%; }
@@ -686,7 +692,7 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
     <!-- Row 2 -->
     <div class="bento-card bento-col-2 glass lift bento-anchor">
       <h3>Building Toward</h3>
-      <p>Large-scale systems that solve real-world problems.</p>
+      <p>Building at the intersection of software, data, and infrastructure.</p>
     </div>
     <div class="bento-card glass lift">
       <h3>Philosophy</h3>
@@ -705,7 +711,7 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
     </div>
     <div class="bento-card glass lift">
       <h3>Current Interests</h3>
-      <ul class="v-list">
+      <ul class="v-list soft">
         <li>AI</li>
         <li>Data Engineering</li>
         <li>System Design</li>
@@ -714,7 +720,7 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
     </div>
     <div class="bento-card glass lift">
       <h3>Beyond Tech</h3>
-      <ul class="v-list">
+      <ul class="v-list personal">
         <li>Cricket</li>
         <li>Fitness</li>
         <li>Product Design</li>
