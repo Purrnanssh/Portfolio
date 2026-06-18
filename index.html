@@ -415,9 +415,9 @@ h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.04
 /* ============================================================ CERTIFICATIONS */
 .certs{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px }
 .cert{ padding:28px; border-radius:26px; display:flex; flex-direction:column; gap:0 }
-.cert-mark{ width:52px; height:52px; border-radius:16px; display:grid; place-items:center;
-  background:var(--glass-strong); border:1px solid var(--stroke); font-weight:700; font-size:18px;
-  letter-spacing:-0.02em; margin-bottom:22px }
+.cert-mark{ width:fit-content; height:48px; padding:0 20px; border-radius:16px; display:inline-flex; align-items:center; justify-content:center;
+  background:var(--glass-strong); border:1px solid var(--stroke); font-weight:600; font-size:15px;
+  letter-spacing:-0.01em; margin-bottom:22px }
 .cert h3{ font-size:16.5px; font-weight:640; letter-spacing:-0.015em; line-height:1.3 }
 .cert .org{ margin-top:8px; font-size:13.5px; color:var(--text-2) }
 .cert .date{ margin-top:4px; font-family:var(--mono); font-size:11.5px; color:var(--text-3) }
@@ -915,21 +915,21 @@ footer{ padding:40px 0 140px; margin-top:20px; border:none; }
   </header>
   <div class="certs" data-stagger>
     <div class="cert glass lift">
-      <div class="cert-mark" aria-hidden="true">I</div>
+      <div class="cert-mark" aria-hidden="true">IBM</div>
       <h3>Artificial Intelligence Fundamentals</h3>
       <p class="org">IBM</p>
       <p class="date">Issued on June 2026</p>
       <a class="btn btn-ghost btn-sm magnetic" href="https://www.credly.com/badges/ddb8d21f-f312-4fc6-8dc8-81defa1fe289/public_url" target="_blank" rel="noopener">Verify credential ↗</a>
     </div>
     <div class="cert glass lift">
-      <div class="cert-mark" aria-hidden="true">O</div>
+      <div class="cert-mark" aria-hidden="true">Oracle</div>
       <h3>OCI 2024 AI Foundations Associate</h3>
       <p class="org">Oracle Cloud Infrastructure</p>
       <p class="date">Issued on Feb 2025</p>
       <a class="btn btn-ghost btn-sm magnetic" href="assets/certificates/Oracle%20Certificate.pdf" target="_blank" rel="noopener">Verify credential ↗</a>
     </div>
     <div class="cert glass lift">
-      <div class="cert-mark" aria-hidden="true">N</div>
+      <div class="cert-mark" aria-hidden="true">NPTEL</div>
       <h3>Privacy &amp; Security in Online Social Media</h3>
       <p class="org">NPTEL</p>
       <p class="date">Issued 2024</p>
