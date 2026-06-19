@@ -326,10 +326,12 @@ h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.04
 /* ============================================================ ABOUT BENTO */
 .bento-about { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .bento-card { background: var(--glass); border: 1px solid var(--stroke); border-radius: 26px; padding: 40px; display: flex; flex-direction: column; justify-content: flex-start; }
-.bento-card h3 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 600; letter-spacing: -0.018em; line-height: 1.15; margin-bottom: 20px; color: var(--text); }
+.bento-card h3 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.8rem); font-weight: 600; letter-spacing: -0.018em; line-height: 1.15; margin-bottom: 20px; color: var(--text); opacity: 0.88; }
 .bento-card p { font-size: 14.5px; color: var(--text-body); line-height: 1.6; margin: 0; }
 .bento-col-2 { grid-column: span 2; }
 .bento-col-3 { grid-column: span 3; }
+
+.bento-card.bento-anchor h3 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--text); opacity: 1; }
 .bento-card.bento-anchor p { font-size: 19px; font-weight: 400; letter-spacing: -0.01em; line-height: 1.45; color: var(--text-2); }
 
 .bento-card.bio p { font-size: 17px; line-height: 1.6; color: var(--text); font-weight: 400; }
