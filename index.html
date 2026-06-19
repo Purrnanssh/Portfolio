@@ -341,7 +341,8 @@ h1{ font-size: clamp(2.7rem, 6.6vw, 5rem); font-weight:660; letter-spacing:-0.04
 
 /* ============================================================ STRUCTURED GRID */
 .structured-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; margin-top: auto; }
-.grid-chip { display: flex; align-items: center; justify-content: center; padding: 8px 14px; border-radius: 999px; background: var(--glass); border: 1px solid var(--stroke); font-size: 13.5px; font-weight: 400; color: var(--text); text-align: center; }
+.grid-chip { display: flex; align-items: center; justify-content: center; padding: 8px 14px; border-radius: 999px; background: var(--glass); border: 1px solid var(--stroke); font-size: 13.5px; font-weight: 400; color: var(--text); text-align: center; transition: border-color .25s, transform .3s var(--ease-spring); }
+.grid-chip:hover { border-color: var(--stroke-strong); transform: translateY(-2px); }
 
 
 
