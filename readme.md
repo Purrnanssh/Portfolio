@@ -1,1 +1,4 @@
-Website : https://portfolio-wine-two-9chcvb1dkt.vercel.app
+Data science, beyond dashboards.
+My portfolio is now live.
+
+https://purrnanssh.github.io/Portfolio/
